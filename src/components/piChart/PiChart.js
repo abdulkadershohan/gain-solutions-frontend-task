@@ -3,7 +3,18 @@ import { defaults, Pie } from 'react-chartjs-2'
 
 defaults.global.tooltips.enabled = false
 // defaults.global.legend.position = 'right'
-export default function PiChart() {
+export default function PiChart({ data }) {
+
+    const countDarazItems = data.filter(item => item.seller_name === "Daraz").length
+    const countBikroyItems = data.filter(item => item.ad_category === "Bikroy.com").length
+    const countPickabooItems = data.filter(item => item.seller_name === "Pickaboo").length
+
+    const totalItems = countDarazItems + countBikroyItems + countPickabooItems;
+    const darazPercentage = parseInt((countDarazItems / totalItems) * 100)
+    const bikroyPercentage = parseInt((countBikroyItems / totalItems) * 100)
+    const pickabooPercentage = parseInt((countPickabooItems / totalItems) * 100)
+
+
     return (
         <div>
             <h1 style={{
@@ -27,11 +38,11 @@ export default function PiChart() {
 
                 <Pie
                     data={{
-                        labels: ['Daraz', 'Pickaboo', 'Bikroy',],
+                        labels: [`Daraz: ${darazPercentage} %`, `Daraz: ${pickabooPercentage} %`, `Daraz: ${bikroyPercentage} %`],
                         datasets: [
                             {
                                 label: '# of votes',
-                                data: [30, 35, 30],
+                                data: [countPickabooItems, countDarazItems, countBikroyItems],
                                 backgroundColor: [
                                     '#84AF27',
                                     '#FFC239',

@@ -4,7 +4,12 @@ import { Bar } from 'react-chartjs-2';
 // defaults.global.tooltips.enabled = false
 // defaults.global.legend.position = 'bottom'
 
-const BarChart = () => {
+const BarChart = ({ data }) => {
+    console.log(data)
+    const unofficial_warranty = data.filter(item => item.unofficial_warranty === true).length
+    const official_warranty = data.filter(item => item.official_warranty === true).length
+    const without_warranty = data.filter(item => item.no_warranty === true).length
+    const used_phone = data.filter(item => item.used_phone === true).length
     return (
         <div>
             <h1 style={{
@@ -31,7 +36,7 @@ const BarChart = () => {
                         datasets: [
                             {
                                 label: '# of votes',
-                                data: [30000, 2000, 30000, 30000, 0, 50000],
+                                data: [official_warranty, unofficial_warranty, without_warranty, used_phone,],
                                 backgroundColor: [
                                     '#0095A0',
                                     '#0095A0',
