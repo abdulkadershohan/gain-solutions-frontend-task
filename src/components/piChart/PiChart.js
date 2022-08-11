@@ -1,5 +1,6 @@
 import React from 'react'
 import { defaults, Pie } from 'react-chartjs-2'
+import { HeaderTitle } from '../../utilitty'
 
 defaults.global.tooltips.enabled = false
 // defaults.global.legend.position = 'right'
@@ -17,18 +18,8 @@ export default function PiChart({ data }) {
 
     return (
         <div>
-            <h1 style={{
-                fontSize: '24px',
-                fontWeight: 600,
-                lineHeight: '36px',
-                color: '#575757',
-                paddingTop: '20px',
-                paddingBottom: '20px',
+            <HeaderTitle title='Sources' />
 
-
-            }}>
-                Sources
-            </h1>
             <div
                 style={{
                     height: 300,

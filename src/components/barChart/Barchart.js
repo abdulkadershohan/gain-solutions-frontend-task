@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import { HeaderTitle } from '../../utilitty';
 
 // defaults.global.tooltips.enabled = false
 // defaults.global.legend.position = 'bottom'
@@ -12,18 +13,10 @@ const BarChart = ({ data }) => {
     const used_phone = data.filter(item => item.used_phone === true).length
     return (
         <div>
-            <h1 style={{
-                fontSize: '24px',
-                fontWeight: 600,
-                lineHeight: '36px',
-                color: '#575757',
-                paddingTop: '20px',
-                paddingBottom: '20px',
+            <HeaderTitle title='Conditions' />
 
 
-            }}>
-                Conditions
-            </h1>
+
             <div
                 style={{
                     height: 300,

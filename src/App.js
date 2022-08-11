@@ -1,6 +1,7 @@
 import './App.css';
 import Chart from './components/chartSection/Chart';
 import Navbar from './components/navbar/Navbar';
+import Products from './components/products/Products';
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
 
       <Navbar />
       <Chart />
+      <Products />
 
     </div>
   );
