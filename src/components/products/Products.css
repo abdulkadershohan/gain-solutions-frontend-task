@@ -1,0 +1,24 @@
+.dropdown-product{
+    background-color: #fff ;
+    border: 1px solid #B7B8BC;
+    color:#74777B;
+    font-weight: 400;
+    line-height: 24px;
+    font-size: 16px;
+    padding: 10px 20px;
+
+}
+
+.dropdown-product:hover{
+    background-color: #0095A0 ;
+    color:#fff;
+   
+}
+.dropdown-label{
+    padding-right: 5px;
+}
+.table-title{
+    color: #74777B;
+    font-size: 16px;
+    font-weight: 400;
+}
