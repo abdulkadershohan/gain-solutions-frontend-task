@@ -1,0 +1,48 @@
+.navbar{
+  background: #0095A0 ;
+}
+.logo{
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 47px;
+    padding-left: 50px;    
+    width: 55%;
+}
+.search{
+    padding: 7px;
+    border: 1px solid #FFFFFF;
+    width: 400px;
+    background-color: #0095A0;
+}
+
+#search::placeholder{
+    color: #fff;
+    font-weight: 400;
+    font-size: 15px;  
+    padding-left: 10px;
+}
+.add-product-btn{
+    background-color: #F7F5F2;
+    border: none;
+    border-radius: 2px;
+    color: #0095A0;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+
+}
+
+.form-search{
+    background-color: #f00;
+    position: relative;
+}
+.search-icon{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #fff;
+    
+}
