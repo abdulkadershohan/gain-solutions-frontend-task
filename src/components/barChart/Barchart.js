@@ -6,7 +6,7 @@ import { HeaderTitle } from '../../utilitty';
 // defaults.global.legend.position = 'bottom'
 
 const BarChart = ({ data }) => {
-    console.log(data)
+
     const unofficial_warranty = data.filter(item => item.unofficial_warranty === true).length
     const official_warranty = data.filter(item => item.official_warranty === true).length
     const without_warranty = data.filter(item => item.no_warranty === true).length
