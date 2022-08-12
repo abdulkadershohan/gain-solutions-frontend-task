@@ -25,7 +25,6 @@ export default function Products() {
             setLoading(false)
         }
     }, [data2])
-    console.log(data2.length)
 
 
     const RenderTableData = (item) => {
@@ -33,16 +32,30 @@ export default function Products() {
         let brand = item.item.brand
         let ram_rom = item.item.ram + '/' + item.item.storage
         let phone_price = item.item.phone_price
-        let best_camera = item.item.speciality.filter((item) => item.includes('camera'))
-        let best_performance = item.item.speciality.filter((item) => item.includes('Gaming specific chipset')) || item.item.speciality.filter((item) => item.includes('Fast chipset for heavy usage'))
-        let best_value = item.item.speciality.filter((item) => item.includes(`Good performance for it's price`))
+        // let best_camera = item.item.speciality.filter((item) => item.includes('camera'))
+        // const getRearCamera = item.item.phone_details.mainCamera.slice(0, 2)
+        const getRearCameraCount = item.item.phone_details.mainCamera.split(",").length - 1
+        const getRearCameraSize = item.item.phone_details.mainCamera.slice(0, 2)
+        const getSelfieCamera = item.item.phone_details.selfieCamera.slice(0, 2)
+
+        let best_camera = item.item.phone_details.external.includes('microSD') && item.item.storage >= 64 && getSelfieCamera >= 13 && getRearCameraCount >= 3 && getRearCameraSize >= 16
+        let best_value = item.item.phone_price <= 20000 && item.item.ram >= 4 && item.item.storage >= 128 && (item.item.brand === 'Xiaomi' || item.item.brand === 'Realme')
+
+        const chipSet = item.item.phone_details.chipset.includes('Snapdragon')
+        let best_performance = chipSet && item.item.phone_price < 20000 && item.item.ram > 4 && item.item.storage >= 128 && item.item.display_amoled === true && item.item.speciality.filter((item) => item.includes('1080p display'))
+
+
+        // let best_performance = item.item.speciality.filter((item) => item.includes('Gaming specific chipset')) || item.item.speciality.filter((item) => item.includes('Fast chipset for heavy usage'))       
 
         let image = item.item.phone_images
-        // console.log(
-        //     // item.item.speciality //=== "E-commerce"
-        //     // best_camera
-        //     image[0]
-        // )
+        console.log(
+            // item.item.speciality //=== "E-commerce"
+            // best_camera
+            // image[0]
+            // getRearCameraSize >= 16 && getRearCameraSize
+            //  best_performance === true ? 'best_performance' : null
+
+        )
 
         return (
             <div className="row py-4 align-items-center product-container  ">
@@ -58,7 +71,7 @@ export default function Products() {
                 </div>
                 <div className="col-4 ">
                     {
-                        best_camera.length > 0 && (
+                        best_camera && (
                             <Badge title={'Best Camera'} />
 
                         )}
@@ -68,13 +81,13 @@ export default function Products() {
                     }}></span>
 
                     {
-                        best_performance.length > 0 && (
+                        best_performance && (
                             <Badge title={'Best Performance'} />
                         )}
 
 
                     {
-                        best_value.length > 0 && (
+                        best_value && (
                             <Badge title={'Best Value'} />
                         )}
 
