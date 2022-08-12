@@ -35,19 +35,10 @@ const BarChart = ({ data }) => {
                                     '#0095A0',
                                     '#0095A0',
                                     '#0095A0',
-
                                 ],
-
-
-
-
-
-
+                                barPercentage: 0.2
                             },
-
                         ],
-
-
                     }}
                     height={400}
                     width={600}
@@ -71,7 +62,7 @@ const BarChart = ({ data }) => {
 
                             ],
                             xAxes: [{
-                                barPercentage: 0.2
+                                //
                             },
                                 // {
                                 //     gridLines: {

@@ -1,7 +1,7 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import data from '../../store/Data'
-import { HeaderTitle, PhoneNameSubTitle, PhoneNameTitle } from '../../utilitty'
+import { Badge, HeaderTitle, PhoneNameSubTitle, PhoneNameTitle } from '../../utilitty'
 import Loader from '../loader/Loader'
 import './Products.css'
 
@@ -12,39 +12,70 @@ export default function Products() {
 
     const fetchMoreData = () => {
         setTimeout(() => {
-
             if (data.length > data2.length) {
                 setData2(data2.concat(data.slice(0, page * 20)))
             }
-        }, 500)
-
-        // this.setState({
-        //     items: this.state.items.concat(Array.from({ length: 20 }))
-        // });   
-
+        }, 1000)
     }
 
 
     const RenderTableData = (item) => {
+        let phoneName = item.item.phone_title
+        let brand = item.item.brand
+        let ram_rom = item.item.ram + '/' + item.item.storage
+        let phone_price = item.item.phone_price
+        let best_camera = item.item.speciality.filter((item) => item.includes('camera'))
+        let best_performance = item.item.speciality.filter((item) => item.includes('Gaming specific chipset')) || item.item.speciality.filter((item) => item.includes('Fast chipset for heavy usage'))
+        let best_value = item.item.speciality.filter((item) => item.includes(`Good performance for it's price`))
+
+        let image = item.item.phone_images
+        console.log(
+            // item.item.speciality //=== "E-commerce"
+            // best_camera
+            image[0]
+        )
+
         return (
             <div className="row py-4 align-items-center product-container  ">
-                <div className="col-3 d-flex align-items-center phone gap-3 ">
-                    <img src={'https://www.bdprice.com.bd/wp-content/uploads/2020/12/Oukitel-C21.jpg'} alt="" />
-                    <div className='pt-4'>
-                        <PhoneNameTitle title={'Samsung Galaxy S22 '} />
-                        <PhoneNameSubTitle title={'Samsung'} />
+                <div className="col-4 d-flex align-items-center phone gap-3 ">
+                    <img src={image[0]} alt="phone-img" />
+                    <div className='pt-4 '>
+                        <PhoneNameTitle title={phoneName} />
+                        <PhoneNameSubTitle title={brand} />
                     </div>
                 </div>
-                <div className="col-3">
-                    <PhoneNameSubTitle title={'4/64'} />
+                <div className="col-2">
+                    <PhoneNameSubTitle title={ram_rom} />
                 </div>
-                <div className="col-3">
-                    <span class="badge bg-secondary">New</span>
+                <div className="col-4 ">
+                    {
+                        best_camera.length > 0 && (
+                            <Badge title={'Best Camera'} />
+
+                        )}
+                    <span style={{
+                        // marginLeft: '5px',
+                        marginRight: '10px'
+                    }}></span>
+
+                    {
+                        best_performance.length > 0 && (
+                            <Badge title={'Best Performance'} />
+                        )}
+
+
+                    {
+                        best_value.length > 0 && (
+                            <Badge title={'Best Value'} />
+                        )}
+
+
                 </div>
-                <div className="col-3">
-                    <PhoneNameSubTitle title={'TK 150,000'} />
+                <div className="col-2 d-flex align-items-end flex-column ">
+                    <PhoneNameSubTitle title={`TK ${phone_price}`} />
                 </div>
-            </div>
+
+            </div >
         )
     }
 
@@ -72,17 +103,17 @@ export default function Products() {
                 </div>
             </div>
             <div className="row py-4">
-                <div className="col-3">
+                <div className="col-4">
                     <p className='table-title'>Model</p>
                 </div>
-                <div className="col-3">
+                <div className="col-2">
                     <p className='table-title'>Ram/Rom</p>
                 </div>
-                <div className="col-3">
+                <div className="col-4">
                     <p className='table-title'>Tag</p>
                 </div>
-                <div className="col-3">
-                    <p className='table-title'>Price</p>
+                <div className="col-2">
+                    <p className='table-title d-flex align-items-end flex-column '>Price</p>
                 </div>
             </div>
             {/* {
@@ -101,6 +132,17 @@ export default function Products() {
                 hasMore={true}
                 loader={<Loader />}
             >
+                {/* {
+                    Object.keys(data2).map((item, index) => {
+                        return (
+                            <RenderTableData
+                                item={data2[item]}
+                                key={Math.random()}
+                            />
+                        )
+                    })
+
+                } */}
                 {
                     data2.map((item, index) => {
                         return (

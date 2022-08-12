@@ -7,11 +7,11 @@ export default function Chart() {
     return (
         <div className="container py-5">
             <div className="row">
-                <div className="col-sm-12 col-md-6">
+                <div className="col-sm-12 col-lg-6">
                     <PiChart data={data} />
 
                 </div>
-                <div className="col-sm-12 col-md-6">
+                <div className="col-sm-12 col-lg-6">
                     <BarChart data={data} />
                 </div>
             </div>

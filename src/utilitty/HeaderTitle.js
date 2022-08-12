@@ -9,10 +9,12 @@ export default function HeaderTitle({ title, ...rest }) {
             color: '#575757',
             paddingTop: '20px',
             paddingBottom: '20px',
-            ...rest
 
 
-        }}>
+
+        }}
+            {...rest}
+        >
             {title}
         </h1>
     )
