@@ -51,7 +51,7 @@ export default function Modal() {
                                     />
                                 </div>
                             </div>
-                            <label for="tags-input" className="form-label">Tags</label>
+                            <label htmlFor="tags-input" className="form-label">Tags</label>
                             <select className="form-select" aria-label="Default select example"
                                 onChange={(e) => setFormData({ ...formData, tag: e.target.value })}
                             >

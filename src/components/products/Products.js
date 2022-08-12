@@ -1,5 +1,6 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { useNavigate } from "react-router-dom"
 import data from '../../store/Data'
 import { Badge, HeaderTitle, PhoneNameSubTitle, PhoneNameTitle } from '../../utilitty'
 import Loader from '../loader/Loader'
@@ -10,6 +11,7 @@ export default function Products() {
     const [data2, setData2] = React.useState(data.slice(0, 20))
     const [loading, setLoading] = React.useState(true)
     const [selectedItem, setSelectedItem] = React.useState(null)
+    const navigate = useNavigate()
 
 
     const fetchMoreData = () => {
@@ -50,7 +52,16 @@ export default function Products() {
         return (
             <div className="row py-4 align-items-center product-container  ">
                 <div className="col-4 d-flex align-items-center phone gap-3 ">
-                    <img src={image[0]} alt="phone-img" />
+                    <img src={image[0]} alt="phone-img"
+                        onClick={() => {
+                            navigate('/imageGallery', {
+                                state: {
+                                    item: item.item.phone_images
+                                }
+                            })
+                        }}
+
+                    />
                     <div className='pt-4 '>
                         <PhoneNameTitle title={phoneName} />
                         <PhoneNameSubTitle title={brand} />
@@ -121,7 +132,6 @@ export default function Products() {
 
 
 
-    console.log(selectedItem)
 
     return (
         <div className="container">

@@ -1,28 +1,25 @@
 import React from 'react';
+import {
+  BrowserRouter as Router, Route, Routes
+} from "react-router-dom";
 import './App.css';
-import Chart from './components/chartSection/Chart';
-import Modal from './components/modal/Modal';
-import Navbar from './components/navbar/Navbar';
-import Products from './components/products/Products';
+import Home from './components/home/Home';
+import ImageGallery from './components/imageGallery/ImageGallery';
 
 
 function App() {
-  const [showModal, setShowModal] = React.useState(false);
+
   return (
-    <div className="container-fluid p-0">
 
-      <Navbar setShowModal={setShowModal} />
-      {/* {
-        showModal && (
-          <Modal />
-        )
-      } */}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/imageGallery" element={<ImageGallery />} />
+      </Routes>
 
-      <Chart />
-      <Products />
+    </Router>
 
 
-    </div>
   );
 }
 
