@@ -27,7 +27,7 @@ export default function Products() {
 
     const RenderTableData = (item) => {
         return (
-            <div className="row py-4 align-items-center">
+            <div className="row py-4 align-items-center product-container  ">
                 <div className="col-3 d-flex align-items-center phone gap-3 ">
                     <img src={'https://www.bdprice.com.bd/wp-content/uploads/2020/12/Oukitel-C21.jpg'} alt="" />
                     <div className='pt-4'>
