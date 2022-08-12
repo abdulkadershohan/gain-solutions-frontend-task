@@ -2,6 +2,7 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import data from '../../store/Data'
 import { HeaderTitle, PhoneNameSubTitle, PhoneNameTitle } from '../../utilitty'
+import Loader from '../loader/Loader'
 import './Products.css'
 
 export default function Products() {
@@ -98,7 +99,7 @@ export default function Products() {
                 dataLength={data2.length}
                 next={fetchMoreData}
                 hasMore={true}
-                loader={<h4>Loading...</h4>}
+                loader={<Loader />}
             >
                 {
                     data2.map((item, index) => {
