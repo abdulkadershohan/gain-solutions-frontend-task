@@ -8,6 +8,7 @@ import './Products.css'
 export default function Products() {
     const [page, setPage] = React.useState(1)
     const [data2, setData2] = React.useState(data.slice(0, 20))
+    const [loading, setLoading] = React.useState(true)
 
 
     const fetchMoreData = () => {
@@ -15,8 +16,16 @@ export default function Products() {
             if (data.length > data2.length) {
                 setData2(data2.concat(data.slice(0, page * 20)))
             }
+
         }, 1000)
     }
+
+    React.useEffect(() => {
+        if (data.length < data2.length) {
+            setLoading(false)
+        }
+    }, [data2])
+    console.log(data2.length)
 
 
     const RenderTableData = (item) => {
@@ -29,11 +38,11 @@ export default function Products() {
         let best_value = item.item.speciality.filter((item) => item.includes(`Good performance for it's price`))
 
         let image = item.item.phone_images
-        console.log(
-            // item.item.speciality //=== "E-commerce"
-            // best_camera
-            image[0]
-        )
+        // console.log(
+        //     // item.item.speciality //=== "E-commerce"
+        //     // best_camera
+        //     image[0]
+        // )
 
         return (
             <div className="row py-4 align-items-center product-container  ">
@@ -116,21 +125,12 @@ export default function Products() {
                     <p className='table-title d-flex align-items-end flex-column '>Price</p>
                 </div>
             </div>
-            {/* {
-                data.map((item, index) => {
-                    return (
-                        <RenderTableData
-                            item={item}
-                            key={Math.random()}
-                        />
-                    )
-                })
-            } */}
+
             <InfiniteScroll
                 dataLength={data2.length}
                 next={fetchMoreData}
                 hasMore={true}
-                loader={<Loader />}
+                loader={loading && <Loader />}
             >
                 {/* {
                     Object.keys(data2).map((item, index) => {
