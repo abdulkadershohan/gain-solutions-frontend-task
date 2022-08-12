@@ -121,8 +121,7 @@ export default function Products() {
 
 
 
-    console.log(filterData)
-
+    console.log(selectedItem)
 
     return (
         <div className="container">
@@ -164,30 +163,32 @@ export default function Products() {
 
             <InfiniteScroll
                 dataLength={selectedItem === null ? data2.length : filterData.length}
+                // dataLength={data2.length}
                 next={fetchMoreData}
                 hasMore={true}
                 loader={loading && <Loader />}
             >
-                {/* {
-                    Object.keys(data2).map((item, index) => {
-                        return (
-                            <RenderTableData
-                                item={data2[item]}
-                                key={Math.random()}
-                            />
-                        )
-                    })
-
-                } */}
                 {
-                    filterData.map((item, index) => {
-                        return (
-                            <RenderTableData
-                                item={item}
-                                key={Math.random()}
-                            />
-                        )
-                    })
+                    selectedItem === null ? (
+                        data2.map((item, index) => {
+                            return (
+                                <RenderTableData
+                                    item={item}
+                                    key={Math.random()}
+                                />
+                            )
+                        })
+                    ) :
+                        filterData.map((item, index) => {
+                            return (
+                                <RenderTableData
+                                    item={item}
+                                    key={Math.random()}
+                                />
+                            )
+                        })
+
+
                 }
             </InfiniteScroll>
 

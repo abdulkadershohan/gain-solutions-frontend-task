@@ -29,7 +29,7 @@ export default function PiChart({ data }) {
 
                 <Pie
                     data={{
-                        labels: [`Daraz: ${darazPercentage} %`, `Daraz: ${pickabooPercentage} %`, `Daraz: ${bikroyPercentage} %`],
+                        labels: [`Daraz: ${darazPercentage} %`, `Pickaboo: ${pickabooPercentage} %`, `Bikroy: ${bikroyPercentage} %`],
                         datasets: [
                             {
                                 label: '# of votes',
